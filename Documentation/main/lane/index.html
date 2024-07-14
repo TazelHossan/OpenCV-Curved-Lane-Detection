@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+   <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+      <meta charset="utf-8" />
+      <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible" />
+      <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+      
+      <meta content="projects#show" name="pageType" />
+      <title>Curved Lane Detection</title>
+      <meta content="Curved Lane Detection" property="og:headline" />
+      <meta content="Curved Lane Detection" property="og:title" />
+    <meta content="600" property="og:image:width" />
+      <meta content="450" property="og:image:height" />
+    
+      
+      <link rel="stylesheet" media="all" href="../../prod.hackster-cdn.online/assets/application-5ddbb9317c318164a2d41d914695bde1963e407f5ff71748dd974485e674025a.css" />
+      <link href="../../prod.hackster-cdn.online/assets/bundles/styles.6d9b4adf9641fd3a0c08.css" rel="stylesheet" />
+      <link href="../../prod.hackster-cdn.online/assets/favicons/apple-touch-icon-57x57-a2597d3874c16d9c70a4fdb5da68cb571fdc1348fa262ec8e055e777341d010559be.png?v=zXX3Bm3lo3" rel="apple-touch-icon" sizes="57x57" />
+      <link href="../../prod.hackster-cdn.online/assets/favicons/apple-touch-icon-60x60-c04ae8fd886a0fde3b8464d950a642891b47dcb1984c84c85ec2ef71150da9fd59be.png?v=zXX3Bm3lo3" rel="apple-touch-icon" sizes="60x60" />
+      <link href="../../prod.hackster-cdn.online/assets/favicons/apple-touch-icon-72x72-86099d7998397d40538b5d6f8e5d6eaca182430762d568c322fd158ad86e81c659be.png?v=zXX3Bm3lo3" rel="apple-touch-icon" sizes="72x72" />
+      <link href="../../prod.hackster-cdn.online/assets/favicons/apple-touch-icon-76x76-4d18ccced2238aa1e402954fd19d7a23f8090ebed948971a52de676fafa8a36f59be.png?v=zXX3Bm3lo3" rel="apple-touch-icon" sizes="76x76" />
+      <link href="../../prod.hackster-cdn.online/assets/favicons/apple-touch-icon-114x114-52cea2a2553599a1b8e0458daae2f02c67fbbe299619b9c44d9dfbc12d15659359be.png?v=zXX3Bm3lo3" rel="apple-touch-icon" sizes="114x114" />
+      <link href="../../prod.hackster-cdn.online/assets/favicons/apple-touch-icon-120x120-746e4f4ddf39c56bdf0948be9e979fcb699032372f678d55d9a37bcd475612e059be.png?v=zXX3Bm3lo3" rel="apple-touch-icon" sizes="120x120" />
+      <link href="../../prod.hackster-cdn.online/assets/favicons/apple-touch-icon-144x144-8f1e9d75624522206a1e06b0948f3bddb9c4f5a9f8872f53fb51f0df6f59cf2259be.png?v=zXX3Bm3lo3" rel="apple-touch-icon" sizes="144x144" />
+      <link href="../../prod.hackster-cdn.online/assets/favicons/apple-touch-icon-152x152-cdc99a7416d6cd2b08c924fd1302f2856d181c4a6e88821ef6a4d725d687202a59be.png?v=zXX3Bm3lo3" rel="apple-touch-icon" sizes="152x152" />
+      <link href="../../prod.hackster-cdn.online/assets/favicons/apple-touch-icon-180x180-5a4a283879ef723a17bc4568ee382e40e1dc5cd9002ed04cfb3a12e1664458c359be.png?v=zXX3Bm3lo3" rel="apple-touch-icon" sizes="180x180" />
+      <link href="../../prod.hackster-cdn.online/assets/favicons/favicon-16x16-a6c90b8e1a8d46fe7119d318e0cfee52d8e96616aba092bc01ad8d0980baee8a36c1.png?v=zXX3Bm3lo3%22%20sizes=%2216x16" rel="icon" type="image/png" />
+      <link href="../../prod.hackster-cdn.online/assets/favicons/favicon-32x32-2fac8fa2972dcbbb5dce5bb8210dba4a94491519a6a050648f8961c69857158c616b.png?v=zXX3Bm3lo3%22%20sizes=%2232x32" rel="icon" type="image/png" />
+      <link href="../../prod.hackster-cdn.online/assets/favicons/favicon-96x96-b9fa47eca8f09fa1733a16747d97989d80e78279b4150392bdbe16a733522b3f47fb.png?v=zXX3Bm3lo3%22%20sizes=%2296x96" rel="icon" type="image/png" />
+      <link href="../../prod.hackster-cdn.online/assets/favicons/android-chrome-192x192-a8f6f7fa90d71387fb2c8f3959c2659c41b963d87b0bd028fbb58db16711086a2d52.png?v=zXX3Bm3lo3%22%20sizes=%22192x192" rel="icon" type="image/png" />
+      <link href="https://prod.hackster-cdn.online/assets/favicons/manifest-83fa31606c8da59dde2cadffca211d30d267c68a776d7714281e7eca02ae5b36.json?v=zXX3Bm3lo3" rel="manifest" />
+      <link color="#1cacf7" href="https://prod.hackster-cdn.online/assets/favicons/safari-pinned-tab-6e97f438f210f8db0afcf6513690b5cfc85f2ea60ac8fecb24e5ffe606a50fc3.svg?v=zXX3Bm3lo3" rel="mask-icon" />
+      <link href="https://prod.hackster-cdn.online/assets/favicons/favicon-8955f42e874b98f97f6ba3076f8b17ac0af864eb76a4b70b81041cbc068f4e17.ico?v=zXX3Bm3lo3" rel="shortcut icon" />
+      <meta content="#1cacf7" name="msapplication-TileColor" />
+      <meta content="https://prod.hackster-cdn.online/assets/favicons/mstile-144x144-83a116484c34c5eda8f003366aff22e71591d729bf5222a05b23feae2967cb35.png?v=zXX3Bm3lo3" name="msapplication-TileImage" />
+      <meta content="#1cacf7" name="theme-color" />
+     
+      </head>
+   <body class="white">
+      
+      <noscript><img height="0" src="../images/debug.html" style="display:none;visibility:hidden" width="0" /><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-KR3BZMN" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+      <div id="outer-wrapper">
+         
+         <div data-hacksternova-key="LocalStoragePopover" data-hacksternova-props="{&quot;buttonText&quot;:{&quot;primary&quot;:&quot;Take survey&quot;,&quot;secondary&quot;:&quot;Maybe later&quot;},&quot;ctaLink&quot;:&quot;https://bit.ly/3VyAX7C&quot;,&quot;mainText&quot;:{&quot;primary&quot;:&quot;We would love to hear from you!&quot;,&quot;secondary&quot;:&quot;Participate in our survey for a chance to win a holiday swag pack.&quot;},&quot;storageKey&quot;:&quot;survey22_3&quot;}"></div>
+         <div id="main">
+            <div class="project-page project-93521" itemscope="" itemtype="http://schema.org/Article">
+               <div class="hckui__layout__container hckui__layout__paddingBottom60">
+                  <div class="hckui__layout__wrapper1170">
+                     <div class="popup-overlay modal-popup" id="embed-popup">
+                        <div class="popup-overlay-bg"></div>
+                        <div class="popup-overlay-outer">
+                           <div class="popup-overlay-inner">
+                              <button class="close unselectable" data-effect="fade" data-target="#embed-popup">&times;</button>
+                              <h3>Embed the widget on your own site</h3>
+                              <div id="project-embed">
+                                 <p>Add the following snippet to your HTML:<textarea class="embed-code" onclick="this.select();" type="text"><iframe frameborder='0' height='385' scrolling='no' src='curved-lane-detection-34f771/embed.html' width='350'></iframe></textarea></p>
+                                 <div class="project-embed-thumb">
+                                    <div class="project-card project-93521">
+                                       <a class="card-image project-link-with-ref" href="curved-lane-detection-34f771.html" target="_blank" title="Curved Lane Detection">
+                                          <div class="img-container">
+                                             <video autoplay="" class="async-video" data-async-poster="https://hackster.imgix.net/uploads/attachments/489391/ezgif-4-c4c3ca8d33_ch9E3MCKnN.gif?auto=format%2Ccompress&amp;gifq=35&amp;w=400&amp;h=300&amp;fit=min&amp;fm=jpg" data-fallback-src="https://hackster.imgix.net/uploads/attachments/489391/ezgif-4-c4c3ca8d33_ch9E3MCKnN.gif?auto=format%2Ccompress&amp;gifq=35&amp;w=400&amp;h=300&amp;fit=min" loop="" muted="" playsinline="">
+                                                <source data-async-src="https://hackster.imgix.net/uploads/attachments/489391/ezgif-4-c4c3ca8d33_ch9E3MCKnN.gif?auto=format%2Ccompress&amp;gifq=35&amp;w=400&amp;h=300&amp;fit=min&amp;fm=mp4" type="video/mp4" />
+                                                <source data-async-src="https://hackster.imgix.net/uploads/attachments/489391/ezgif-4-c4c3ca8d33_ch9E3MCKnN.gif?auto=format%2Ccompress&amp;gifq=35&amp;w=400&amp;h=300&amp;fit=min&amp;fm=webm" type="video/webm" />
+                                             </video>
+                                             <noscript><img alt="Curved Lane Detection" class="cover-img loaded" src="../../hackster.imgix.net/uploads/attachments/489391/ezgif-4-c4c3ca8d33_ch9E3MCKnN3d29.gif?auto=format%2Ccompress&amp;gifq=35&amp;w=400&amp;h=300&amp;fit=min" /></noscript>
+                                          </div>
+                                          <div class="card-image-overlay">
+                                             <p>Version 2 of my lane detection system!</p>
+                                             <p>Read up about this project on <img alt="Hackster.io" title="Hackster is a community dedicated to learning hardware, from beginner to pro." class="hackster-logo" src="../../prod.hackster-cdn.online/assets/hackster_logo_text-035cafb15450c61b5cc44955ffa26afe3c52fb016cf07a15b9d6c796c3ce0bf2.png" /></p>
+                                          </div>
+                                       </a>
+                                     
+                                      
+                                    </div>
+                                 </div>
+                                 <div class="clearfix"></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="hidden" itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+                        <link href="http://schema.org/ViewAction" itemprop="interactionType" />
+                        <meta content="63250" itemprop="userInteractionCount" />
+                     </div>
+                     <div class="hidden" itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+                        <link href="http://schema.org/LikeAction" itemprop="interactionType" />
+                        <meta content="205" itemprop="userInteractionCount" />
+                     </div>
+                     <div class="project-columns">
+                        <div class="left-column">
+                           <div class="affixable" id="project-side-nav" style="top:50px">
+                              <ul class="hckui__typography__bodyS" id="scroll-nav">
+                                 <li class="active"><a data-ha="{&quot;eventName&quot;:&quot;Clicked link&quot;,&quot;customProps&quot;:{&quot;value&quot;:&quot;Overview&quot;,&quot;href&quot;:&quot;#overview&quot;,&quot;type&quot;:&quot;toc&quot;,&quot;location&quot;:&quot;toc&quot;}}" data-offset="-40" href="#overview">Overview</a></li>
+                                 <li><a data-ha="{&quot;eventName&quot;:&quot;Clicked link&quot;,&quot;customProps&quot;:{&quot;value&quot;:&quot;Things&quot;,&quot;href&quot;:&quot;#things&quot;,&quot;type&quot;:&quot;toc&quot;,&quot;location&quot;:&quot;toc&quot;}}" href="#things">Things</a></li>
+                                 <li><a data-ha="{&quot;eventName&quot;:&quot;Clicked link&quot;,&quot;customProps&quot;:{&quot;value&quot;:&quot;Story&quot;,&quot;href&quot;:&quot;#story&quot;,&quot;type&quot;:&quot;toc&quot;,&quot;location&quot;:&quot;toc&quot;}}" href="#story">Story</a></li>
+                                 <ul class="small-toc">
+                                    <li><a data-ha="{&quot;eventName&quot;:&quot;Clicked link&quot;,&quot;customProps&quot;:{&quot;value&quot;:&quot;Introduction&quot;,&quot;href&quot;:&quot;#toc-0&quot;,&quot;type&quot;:&quot;toc&quot;,&quot;location&quot;:&quot;toc&quot;}}" href="#toc-introduction-0">Introduction</a></li>
+                                    <li><a data-ha="{&quot;eventName&quot;:&quot;Clicked link&quot;,&quot;customProps&quot;:{&quot;value&quot;:&quot;Distortion Correction&quot;,&quot;href&quot;:&quot;#toc-2&quot;,&quot;type&quot;:&quot;toc&quot;,&quot;location&quot;:&quot;toc&quot;}}" href="#toc-distortion-correction-2">Distortion Correction</a></li>
+                                    <li><a data-ha="{&quot;eventName&quot;:&quot;Clicked link&quot;,&quot;customProps&quot;:{&quot;value&quot;:&quot;Perspective Warp&quot;,&quot;href&quot;:&quot;#toc-3&quot;,&quot;type&quot;:&quot;toc&quot;,&quot;location&quot;:&quot;toc&quot;}}" href="#toc-perspective-warp-3">Perspective Warp</a></li>
+                                    <li><a data-ha="{&quot;eventName&quot;:&quot;Clicked link&quot;,&quot;customProps&quot;:{&quot;value&quot;:&quot;Sobel Filtering&quot;,&quot;href&quot;:&quot;#toc-4&quot;,&quot;type&quot;:&quot;toc&quot;,&quot;location&quot;:&quot;toc&quot;}}" href="#toc-sobel-filtering-4">Sobel Filtering</a></li>
+                                    <li><a data-ha="{&quot;eventName&quot;:&quot;Clicked link&quot;,&quot;customProps&quot;:{&quot;value&quot;:&quot;Histogram Peak Detection&quot;,&quot;href&quot;:&quot;#toc-5&quot;,&quot;type&quot;:&quot;toc&quot;,&quot;location&quot;:&quot;toc&quot;}}" href="#toc-histogram-peak-detection-5">Histogram Peak Detection</a></li>
+                                    <li><a data-ha="{&quot;eventName&quot;:&quot;Clicked link&quot;,&quot;customProps&quot;:{&quot;value&quot;:&quot;Sliding Window Search&quot;,&quot;href&quot;:&quot;#toc-6&quot;,&quot;type&quot;:&quot;toc&quot;,&quot;location&quot;:&quot;toc&quot;}}" href="#toc-sliding-window-search-6">Sliding Window Search</a></li>
+                                    <li><a data-ha="{&quot;eventName&quot;:&quot;Clicked link&quot;,&quot;customProps&quot;:{&quot;value&quot;:&quot;Curve Fitting&quot;,&quot;href&quot;:&quot;#toc-7&quot;,&quot;type&quot;:&quot;toc&quot;,&quot;location&quot;:&quot;toc&quot;}}" href="#toc-curve-fitting-7">Curve Fitting</a></li>
+                                    <li><a data-ha="{&quot;eventName&quot;:&quot;Clicked link&quot;,&quot;customProps&quot;:{&quot;value&quot;:&quot;Overlay Detected Lane&quot;,&quot;href&quot;:&quot;#toc-8&quot;,&quot;type&quot;:&quot;toc&quot;,&quot;location&quot;:&quot;toc&quot;}}" href="#toc-overlay-detected-lane-8">Overlay Detected Lane</a></li>
+                                    <li><a data-ha="{&quot;eventName&quot;:&quot;Clicked link&quot;,&quot;customProps&quot;:{&quot;value&quot;:&quot;Conclusion&quot;,&quot;href&quot;:&quot;#toc-9&quot;,&quot;type&quot;:&quot;toc&quot;,&quot;location&quot;:&quot;toc&quot;}}" href="#toc-conclusion-9">Conclusion</a></li>
+                                 </ul>
+                                 <li><a data-ha="{&quot;eventName&quot;:&quot;Clicked link&quot;,&quot;customProps&quot;:{&quot;value&quot;:&quot;Schematics&quot;,&quot;href&quot;:&quot;#schematics&quot;,&quot;type&quot;:&quot;toc&quot;,&quot;location&quot;:&quot;toc&quot;}}" href="#schematics">Schematics</a></li>
+                                 <li><a data-ha="{&quot;eventName&quot;:&quot;Clicked link&quot;,&quot;customProps&quot;:{&quot;value&quot;:&quot;Code&quot;,&quot;href&quot;:&quot;#code&quot;,&quot;type&quot;:&quot;toc&quot;,&quot;location&quot;:&quot;toc&quot;}}" href="#code">Code</a></li>
+                                 <li><a data-ha="{&quot;eventName&quot;:&quot;Clicked link&quot;,&quot;customProps&quot;:{&quot;value&quot;:&quot;Credits&quot;,&quot;href&quot;:&quot;#team&quot;,&quot;type&quot;:&quot;toc&quot;,&quot;location&quot;:&quot;toc&quot;}}" href="#team">Credits</a></li>
+                                 </ul>
+                             
+                           </div>
+                        </div>
+                        <div class="middle-column">
+                           <section id="overview">
+                             
+                              <h1 class="hckui__typography__h1" itemprop="name">Curved Lane Detection</h1>
+                              <p class="hckui__typography__bodyL hckui__layout__marginBottom15" itemprop="description">Lane detection system!</p>
+                           
+                              <div class="hckui__layout__marginTop30">
+                                 <div class="project-cover-image" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+                                    <meta content="https://hackster.imgix.net/uploads/attachments/489391/ezgif-4-c4c3ca8d33_ch9E3MCKnN.gif?auto=format%2Ccompress&amp;gifq=35&amp;w=900&amp;h=675&amp;fit=min&amp;fm=jpg" itemprop="url" />
+                                    <meta content="900" itemprop="width" />
+                                    <meta content="675" itemprop="height" />
+                                    <video autoplay="" data-fallback-src="https://hackster.imgix.net/uploads/attachments/489391/ezgif-4-c4c3ca8d33_ch9E3MCKnN.gif?auto=format%2Ccompress&amp;gifq=35&amp;w=900&amp;h=675&amp;fit=min" id="cover-video" loop="" muted="" playsinline="" poster="../../hackster.imgix.net/uploads/attachments/489391/ezgif-4-c4c3ca8d33_ch9E3MCKnNbee9.jpg?auto=format%2Ccompress&amp;gifq=35&amp;w=900&amp;h=675&amp;fit=min&amp;fm=jpg">
+                                       <source src="../../hackster.imgix.net/uploads/attachments/489391/ezgif-4-c4c3ca8d33_ch9E3MCKnN4c41.gif?auto=format%2Ccompress&amp;gifq=35&amp;w=900&amp;h=675&amp;fit=min&amp;fm=mp4" type="video/mp4" />
+                                       <source src="../../hackster.imgix.net/uploads/attachments/489391/ezgif-4-c4c3ca8d33_ch9E3MCKnN3c02.gif?auto=format%2Ccompress&amp;gifq=35&amp;w=900&amp;h=675&amp;fit=min&amp;fm=webm" type="video/webm" />
+                                       <script>(function() {
+                                          var v = document.getElementById('cover-video');
+                                          if (!v.canPlayType || v.paused) {
+                                            v.innerHTML = '<img src="' + v.getAttribute('data-fallback-src') + '" />';
+                                          }
+                                          });
+                                       </script>
+                                    </video>
+                                 </div>
+                              </div>
+                           </section>
+                           <div class="project-section-break"></div>
+                           <div id="project_page_simple_ad_portal"></div>
+                           <div id="description" itemprop="articleBody">
+                              <section id="things">
+                                 <div class="project-section-title">
+                                    <h2 class="hckui__typography__h2 title-with-anchor">
+                                       <a class="anchor" href="#things">
+                                          <i class="hckui__typography__iconWrapper hckui__typography__iconBaselineFix">
+                                             <svg class="hckui__typography__icon hckui__typography__icon20">
+                                                <use xlink:href="#svg-link"></use>
+                                             </svg>
+                                          </i>
+                                       </a>
+                                       <span>Things used in this project </span>
+                                    </h2>
+                                 </div>
+                                 <div class="project-parts">
+                                    <div class="view-expanded" style="display:block">
+                                       <table class="project-parts-table">
+                                          <tbody>
+                                             
+                                             <tr class="head">
+                                                <td colspan="6">
+                                                   <h3 class="hckui__typography__h3">Software apps and online services</h3>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td class="part-img"><img srcset="https://hackster.imgix.net/uploads/attachments/177955/73318_301258139977848_644841747_n.png?auto=compress%2Cformat&amp;w=96&amp;h=96&amp;fit=fill&amp;bg=ffffff 2x, https://hackster.imgix.net/uploads/attachments/177955/73318_301258139977848_644841747_n.png?auto=compress%2Cformat&amp;w=48&amp;h=48&amp;fit=fill&amp;bg=ffffff" alt="OpenCV" src="../../hackster.imgix.net/uploads/attachments/177955/73318_301258139977848_644841747_n2dd9.jpg?auto=compress%2Cformat&amp;w=48&amp;h=48&amp;fit=fill&amp;bg=ffffff" /></td>
+                                                <td>
+                                                   <table>
+                                                      <tbody>
+                                                         <tr>
+                                                            <td class="hckui__typography__bodyL"><a data-ha="{&quot;eventName&quot;:&quot;Clicked link&quot;,&quot;customProps&quot;:{&quot;value&quot;:&quot;OpenCV&quot;,&quot;href&quot;:&quot;/opencv/products/opencv?ref=project-34f771&quot;,&quot;type&quot;:&quot;part&quot;,&quot;location&quot;:&quot;things&quot;},&quot;clickOpts&quot;:{&quot;delayRedirect&quot;:true}}" class="hckui__typography__linkBlue" href="http://opencv.org/">OpenCV</a></td>
+                                                         </tr>
+                                                         <tr>
+                                                            <td class="hckui__typography__bodyS hckui__typography__pebble hckui__typography__breakWord"></td>
+                                                         </tr>
+                                                      </tbody>
+                                                   </table>
+                                                </td>
+                                                <td colspan="2"></td>
+                                             
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </section>
+                              <div class="project-section-break"></div>
+                              <section id="story">
+                                 <div class="project-section-title">
+                                    <h2 class="hckui__typography__h2 title-with-anchor">
+                                       <a class="anchor" href="#story">
+                                          <i class="hckui__typography__iconWrapper hckui__typography__iconBaselineFix">
+                                             <svg class="hckui__typography__icon hckui__typography__icon20">
+                                                <use xlink:href="#svg-link"></use>
+                                             </svg>
+                                          </i>
+                                       </a>
+                                       <span>Story </span>
+                                    </h2>
+                                 </div>
+                                 <div class="project-story collapsible-section collapsed hljs-active hljs-monokai" itemprop="text">
+                                    <p class='hckui__typography__bodyL'>
+									<span > This is the first version of our lane detection project. </span>
+									</p>
+                                    
+                                    <h3 class='hckui__typography__h3 title-with-anchor'id='toc-introduction-0'>
+                                       <p >
+                                       <p class='hckui__typography__bodyL'></p>
+                                       </p><span >Introduction</span>
+                                    </h3>
+                                    <p class='hckui__typography__bodyL'>
+									<span >In any driving scenario, lane lines are an essential component of indicating traffic flow and where a vehicle should drive. It's also a good starting point when developing a self-driving car! </span>
+							
+									<span >, I've implemented a curved lane detection system that works much better, and is more robust to challenging environments. The lane detection system was written in Python using the OpenCV library. Here's the current image processing pipeline:</span></p>
+                                    <ul class='hckui__typography__bodyL'>
+                                       <li >Distortion Correction</li>
+                                    </ul>
+                                    <ul class='hckui__typography__bodyL'>
+                                       <li >Perspective Warp</li>
+                                    </ul>
+                                    <ul class='hckui__typography__bodyL'>
+                                       <li >Sobel Filtering</li>
+                                    </ul>
+                                    <ul class='hckui__typography__bodyL'>
+                                       <li >Histogram Peak Detection</li>
+                                    </ul>
+                                    <ul class='hckui__typography__bodyL'>
+                                       <li >Sliding Window Search</li>
+                                    </ul>
+                                    <ul class='hckui__typography__bodyL'>
+                                       <li >Curve Fitting</li>
+                                    </ul>
+                                    <ul class='hckui__typography__bodyL'>
+                                       <li >Overlay Detected Lane</li>
+                                    </ul>
+                                    <ul class='hckui__typography__bodyL'>
+                                       <li >Apply to Video</li>
+                                    </ul>
+                                   
+                                   
+                                    <h3 class='hckui__typography__h3 title-with-anchor'id='toc-distortion-correction-2'>
+                                       <p >
+                                       <p class='hckui__typography__bodyL'></p>
+                                       </p><span >Distortion Correction</span>
+                                    </h3>
+                                    <p class='hckui__typography__bodyL'>Camera lenses distort incoming light to focus it on the camera sensor. Although this is very useful in allowing us to capture images of our environment, they often end up distorting light slightly inaccurately. This can result in inaccurate measurements in computer vision applications. However, we can easily correct this distortion. </p>
+                                    <p class='hckui__typography__bodyL'>How would you do this? You can calibrate your image against a known object, and generate a distortion model which accounts for lens distortions. This object is often an asymmetric checkerboard, similar to the one below:</p>
+                                    <div data-hypernova-key="ImageCarousel" data-hypernova-id="9c70e23e-80ab-4471-ada1-a9a5182a58e8">
+                                       <div data-reactroot="">
+                                          <div class="image_carousel__container__1sUib undefined">
+                                             <div class="image_carousel__wrapper__J0lO0 lazy_image__fade__3oXBs ">
+                                                <div style="max-width:740px">
+                                                   <div class="hckui__util__absolutePlaceholderParent" style="padding-top:72.68%"></div>
+                                                </div>
+                                             </div>
+                                             <div class="image_carousel__caption__3A6J-"><span>calibration checkerboard (OpenCV Docs)</span></div>
+                                          </div>
+                                          <div></div>
+                                       </div>
+                                    </div>
+                                    <script type="application/json" data-hypernova-key="ImageCarousel" data-hypernova-id="9c70e23e-80ab-4471-ada1-a9a5182a58e8"><!--{"images":[{"caption":"calibration checkerboard (OpenCV Docs)","height":1330,"id":489428,"image_urls":{"headline_url":"https://hackster.imgix.net/uploads/attachments/489428/pattern_p42SVSQo0x.png?auto=compress%2Cformat&amp;w=740&amp;h=555&amp;fit=max","lightbox_url":"https://hackster.imgix.net/uploads/attachments/489428/pattern_p42SVSQo0x.png?auto=compress%2Cformat&amp;w=1280&amp;h=960&amp;fit=max"},"position":0,"width":1830}],"uid":"d8ab6e8165"}--></script>
+                                    <p class='hckui__typography__bodyL'><span >The camera used in the test video was used to take 20 pictures of a checkerboard, which were used to generate the distortion model. We begin by converting the image to grayscale, then applying the </span><code ><a href='http://cv2.findchessboardcorners/'class='hckui__typography__linkBlue'data-ha='{"eventName":"Clicked link","customProps":{"value":"cv2.findChessboardCorners","href":"http://cv2.findchessboardcorners/","type":"story","location":"story"},"clickOpts":{"delayRedirect":true}}'rel='nofollow'>cv2.findChessboardCorners</a></code><code >()</code><span > function. We already know that this chessboard is a 2 dimensional object with exclusively straight lines, so we can apply some transformations to the detected corners to align them properly. I used the</span><code > cv2.CalibrateCamera() </code><span >to get the distortion coefficients and the camera matrix. The camera has been calibrated!</span></p>
+                                    <p class='hckui__typography__bodyL'><span >You can then use </span><code >cv2.undistort()</code><span > to correct the rest of your input data. You can see the difference between the original image of the checkerboard and the corrected image below:</span></p>
+                                    <div data-hypernova-key="ImageCarousel" data-hypernova-id="84f643e3-ed8c-4ff5-9298-8a04abda1d29">
+                                       <div data-reactroot="">
+                                          <div class="image_carousel__container__1sUib undefined">
+                                             <div class="image_carousel__wrapper__J0lO0 lazy_image__fade__3oXBs ">
+                                                <div style="max-width:740px">
+                                                   <div class="hckui__util__absolutePlaceholderParent" style="padding-top:29.77%"></div>
+                                                </div>
+                                             </div>
+                                             <div class="image_carousel__caption__3A6J-"><span>Distortion correction applied to an image containing a calibration checkerboard.</span></div>
+                                          </div>
+                                          <div></div>
+                                       </div>
+                                    </div>
+                                    <script type="application/json" data-hypernova-key="ImageCarousel" data-hypernova-id="84f643e3-ed8c-4ff5-9298-8a04abda1d29"><!--{"images":[{"caption":"Distortion correction applied to an image containing a calibration checkerboard.","height":345,"id":489426,"image_urls":{"headline_url":"https://hackster.imgix.net/uploads/attachments/489426/undistort_z7rQoCUUk7.png?auto=compress%2Cformat&amp;w=740&amp;h=555&amp;fit=max","lightbox_url":"https://hackster.imgix.net/uploads/attachments/489426/undistort_z7rQoCUUk7.png?auto=compress%2Cformat&amp;w=1280&amp;h=960&amp;fit=max"},"position":0,"width":1159}],"uid":"7b7aea4cd0"}--></script>
+                                    <p class='hckui__typography__bodyL'>Here's the exact code I used for this:</p>
+                                    <pre ><code ><span >def undistort_img():
+</span><span >    # Prepare object points 0,0,0 ... 8,5,0
+</span><span >    obj_pts = np.zeros((6*9,3), np.float32)
+</span><span >    obj_pts[:,:2] = np.mgrid[0:9, 0:6].T.reshape(-1,2)
+</span><span >    # Stores all object points &amp; img points from all images
+</span><span >    objpoints = []
+</span><span >    imgpoints = []
+</span><span >    # Get directory for all calibration images
+</span><span >    images = glob.glob('camera_cal/*.jpg')
+</span><span >    for indx, fname in enumerate(images):
+</span><span >        img = cv2.imread(fname)
+</span><span >        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+</span><span >        ret, corners = cv2.findChessboardCorners(gray, (9,6), None)
+</span><span >        if ret == True:
+</span><span >            objpoints.append(obj_pts)
+</span><span >            imgpoints.append(corners)
+</span><span >    # Test undistortion on img
+</span><span >    img_size = (img.shape[1], img.shape[0])
+</span><span >    # Calibrate camera
+</span><span >    ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, img_size, None,None)
+</span><span >    dst = cv2.undistort(img, mtx, dist, None, mtx)
+</span><span >    # Save camera calibration for later use
+</span><span >    dist_pickle = {}
+</span><span >    dist_pickle['mtx'] = mtx
+</span><span >    dist_pickle['dist'] = dist
+</span><span >    pickle.dump( dist_pickle, open('camera_cal/cal_pickle.p', 'wb') )
+</span><span >def undistort(img, cal_dir='camera_cal/cal_pickle.p'):
+</span><span >    #cv2.imwrite('camera_cal/test_cal.jpg', dst)
+</span><span >    with open(cal_dir, mode='rb') as f:
+</span><span >        file = pickle.load(f)    mtx = file['mtx']
+</span><span >    dist = file['dist']
+</span><span >    dst = cv2.undistort(img, mtx, dist, None, mtx)
+</span><span >    return dst
+</span><span >undistort_img()
+</span><span >img = cv2.imread('camera_cal/calibration1.jpg')
+</span><span >dst = undistort(img) # Undistorted image
+</span></code></pre>
+                                    <p class='hckui__typography__bodyL'><span >The functions used for these can also be found in the Jupyter Notebook under the </span><strong >Code</strong><span > section. </span></p>
+                                    <p class='hckui__typography__bodyL'>Here's the distortion correction applied to an image of the road. You might not be able to notice the slight difference, but it can have a huge impact on image processing.</p>
+                                    <div data-hypernova-key="ImageCarousel" data-hypernova-id="8702f021-91dc-4c98-9963-54ca4e26934c">
+                                       <div data-reactroot="">
+                                          <div class="image_carousel__container__1sUib undefined">
+                                             <div class="image_carousel__wrapper__J0lO0 lazy_image__fade__3oXBs ">
+                                                <div style="max-width:740px">
+                                                   <div class="hckui__util__absolutePlaceholderParent" style="padding-top:29.77%"></div>
+                                                </div>
+                                             </div>
+                                             <div class="image_carousel__caption__3A6J-"><span>Distortion correction applied to a driving scene</span></div>
+                                          </div>
+                                          <div></div>
+                                       </div>
+                                    </div>
+                                    <script type="application/json" data-hypernova-key="ImageCarousel" data-hypernova-id="8702f021-91dc-4c98-9963-54ca4e26934c"><!--{"images":[{"caption":"Distortion correction applied to a driving scene","height":345,"id":489431,"image_urls":{"headline_url":"https://hackster.imgix.net/uploads/attachments/489431/download_(15)_7Sbp7powb9.png?auto=compress%2Cformat&amp;w=740&amp;h=555&amp;fit=max","lightbox_url":"https://hackster.imgix.net/uploads/attachments/489431/download_(15)_7Sbp7powb9.png?auto=compress%2Cformat&amp;w=1280&amp;h=960&amp;fit=max"},"position":0,"width":1159}],"uid":"2af11bfda0"}--></script>
+                                    <h3 class='hckui__typography__h3 title-with-anchor'id='toc-perspective-warp-3'>
+                                       <p >
+                                       <p class='hckui__typography__bodyL'></p>
+                                       </p><span >Perspective Warp</span>
+                                    </h3>
+                                    <p class='hckui__typography__bodyL'>Detecting curved lanes in camera space is not very easy. What if we could get a birds eye view of the lanes? That can be done by applying a perspective transformation on the image. Here's what it looks like:</p>
+                                    <div data-hypernova-key="ImageCarousel" data-hypernova-id="89fbe4af-fb13-4f5c-bc45-8c6570503904">
+                                       <div data-reactroot="">
+                                          <div class="image_carousel__container__1sUib undefined">
+                                             <div class="image_carousel__wrapper__J0lO0 lazy_image__fade__3oXBs ">
+                                                <div style="max-width:740px">
+                                                   <div class="hckui__util__absolutePlaceholderParent" style="padding-top:56.05%"></div>
+                                                </div>
+                                             </div>
+                                             <div class="image_carousel__caption__3A6J-"><span>Perspective warped image</span></div>
+                                          </div>
+                                          <div></div>
+                                       </div>
+                                    </div>
+                                    <script type="application/json" data-hypernova-key="ImageCarousel" data-hypernova-id="89fbe4af-fb13-4f5c-bc45-8c6570503904"><!--{"images":[{"caption":"Perspective warped image","height":1001,"id":489432,"image_urls":{"headline_url":"https://hackster.imgix.net/uploads/attachments/489432/screenshot_from_2018-05-24_15-32-49_wmlJ4xBCi1.png?auto=compress%2Cformat&amp;w=740&amp;h=555&amp;fit=max","lightbox_url":"https://hackster.imgix.net/uploads/attachments/489432/screenshot_from_2018-05-24_15-32-49_wmlJ4xBCi1.png?auto=compress%2Cformat&amp;w=1280&amp;h=960&amp;fit=max"},"position":0,"width":1786}],"uid":"c9c5a95dce"}--></script>
+                                    <p class='hckui__typography__bodyL'><span >Notice anything? </span><strong >By assuming that the lane is on a flat 2D surface, we can fit a polynomial that can accurately represent the lane in lane space!</strong><span > Isn't that cool?</span></p>
+                                    <p class='hckui__typography__bodyL'><span >You can apply these transformations to any image using the </span><code >cv2.getPerspectiveTransform()</code><span > function to get the transformation matrix, and </span><code >cv2.warpPerspective()</code><span > to apply it to an image. Here's the code I used for this:</span></p>
+                                    <pre ><code ><span >def perspective_warp(img,
+</span><span >                     dst_size=(1280,720),
+</span><span >                     src=np.float32([(0.43,0.65),(0.58,0.65),(0.1,1),(1,1)]),
+</span><span >                     dst=np.float32([(0,0), (1, 0), (0,1), (1,1)])):
+</span><span >    img_size = np.float32([(img.shape[1],img.shape[0])])
+</span><span >    src = src* img_size
+</span><span >    # For destination points, I'm arbitrarily choosing some points to be
+</span><span >    # a nice fit for displaying our warped result
+</span><span >    # again, not exact, but close enough for our purposes
+</span><span >    dst = dst * np.float32(dst_size)
+</span><span >    # Given src and dst points, calculate the perspective transform matrix
+</span><span >    M = cv2.getPerspectiveTransform(src, dst)
+</span><span >    # Warp the image using OpenCV warpPerspective()
+</span><span >    warped = cv2.warpPerspective(img, M, dst_size)
+</span><span >    return warped
+</span></code></pre>
+                                    <h3 class='hckui__typography__h3 title-with-anchor'id='toc-sobel-filtering-4'>
+                                       <p >
+                                       <p class='hckui__typography__bodyL'></p>
+                                       </p><span >Sobel Filtering</span>
+                                    </h3>
+                                    <p class='hckui__typography__bodyL'>In the previous version, I had filtered out the lane lines using color. However, this isn't always the best option. If the road uses light colored concrete instead of asphalt, the road easily passes through the color filter, and the pipeline will perceive it as a white lane line. Not good.</p>
+                                    <p class='hckui__typography__bodyL'><span >Instead, we can use a method similar to our edge detector, this time to filter out the road. Lane lines typically have a high contrast to the road, so we can use this to our advantage. The </span><strong >Canny</strong><span > edge detector previously used in version 1 makes use of </span><strong >Sobel Operator</strong><span > to get the gradient of an image function. The </span><a href='https://docs.opencv.org/3.2.0/d2/d2c/tutorial_sobel_derivatives.html'class='hckui__typography__linkBlue'data-ha='{"eventName":"Clicked link","customProps":{"value":"OpenCV documentation","href":"https://docs.opencv.org/3.2.0/d2/d2c/tutorial_sobel_derivatives.html","type":"story","location":"story"},"clickOpts":{"delayRedirect":true}}'rel='nofollow'>OpenCV documentation</a><span > has a fantastic explanation on how it works. We'll be using this to detect areas of high contrast to filter lane markings and ignore the road.</span></p>
+                                    <p class='hckui__typography__bodyL'>We'll still be using the HLS Colorspace again, this time to detect changes in Saturation and Lightness. The sobel operators are applied to these two channels, and we extract the gradient with respect to the x axis, and add the pixels which pass our gradient threshold to a binary matrix representing the pixels in our image. Here's what it looks like in camera space and lane space:</p>
+                                    <div data-hypernova-key="ImageCarousel" data-hypernova-id="628f40ad-0ec0-4441-b733-ffb661af8558">
+                                       <div data-reactroot="">
+                                          <div class="image_carousel__container__1sUib undefined">
+                                             <div class="image_carousel__wrapper__J0lO0 lazy_image__fade__3oXBs ">
+                                                <div style="max-width:740.0000000000001px">
+                                                   <div class="hckui__util__absolutePlaceholderParent" style="padding-top:56.33%"></div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div></div>
+                                       </div>
+                                    </div>
+                                    <script type="application/json" data-hypernova-key="ImageCarousel" data-hypernova-id="628f40ad-0ec0-4441-b733-ffb661af8558"><!--{"images":[{"caption":"","height":716,"id":489436,"image_urls":{"headline_url":"https://hackster.imgix.net/uploads/attachments/489436/screenshot_from_2018-05-24_15-50-49_cs59Ps4ghD.png?auto=compress%2Cformat&amp;w=740&amp;h=555&amp;fit=max","lightbox_url":"https://hackster.imgix.net/uploads/attachments/489436/screenshot_from_2018-05-24_15-50-49_cs59Ps4ghD.png?auto=compress%2Cformat&amp;w=1280&amp;h=960&amp;fit=max"},"position":0,"width":1271}],"uid":"8df7e4c637"}--></script>
+                                    <p class='hckui__typography__bodyL'></p>
+                                    <div data-hypernova-key="ImageCarousel" data-hypernova-id="f8770928-0a91-47f7-8162-bf0dcacc8a75">
+                                       <div data-reactroot="">
+                                          <div class="image_carousel__container__1sUib undefined">
+                                             <div class="image_carousel__wrapper__J0lO0 lazy_image__fade__3oXBs ">
+                                                <div style="max-width:740px">
+                                                   <div class="hckui__util__absolutePlaceholderParent" style="padding-top:57.29%"></div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div></div>
+                                       </div>
+                                    </div>
+                                    <script type="application/json" data-hypernova-key="ImageCarousel" data-hypernova-id="f8770928-0a91-47f7-8162-bf0dcacc8a75"><!--{"images":[{"caption":"","height":731,"id":489438,"image_urls":{"headline_url":"https://hackster.imgix.net/uploads/attachments/489438/screenshot_from_2018-05-24_15-52-27_Yg5nGG4W0P.png?auto=compress%2Cformat&amp;w=740&amp;h=555&amp;fit=max","lightbox_url":"https://hackster.imgix.net/uploads/attachments/489438/screenshot_from_2018-05-24_15-52-27_Yg5nGG4W0P.png?auto=compress%2Cformat&amp;w=1280&amp;h=960&amp;fit=max"},"position":0,"width":1276}],"uid":"8ee33c81a6"}--></script>
+                                    <p class='hckui__typography__bodyL'>Note that the parts of the image that were further away from the camera don't retain their quality very well. Due to the resolution limitations of the camera, data from objects further away are heavily blurred and noisy. We don't need to focus on the entire image, so we can just use a portion of it. Here's what the image we'll use will look like:</p>
+                                    <div data-hypernova-key="ImageCarousel" data-hypernova-id="51e008d0-fb1d-4b80-8471-f7acf54476c6">
+                                       <div data-reactroot="">
+                                          <div class="image_carousel__container__1sUib undefined">
+                                             <div class="image_carousel__wrapper__J0lO0 lazy_image__fade__3oXBs ">
+                                                <div style="max-width:740px">
+                                                   <div class="hckui__util__absolutePlaceholderParent" style="padding-top:55.72%"></div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div></div>
+                                       </div>
+                                    </div>
+                                    <script type="application/json" data-hypernova-key="ImageCarousel" data-hypernova-id="51e008d0-fb1d-4b80-8471-f7acf54476c6"><!--{"images":[{"caption":"","height":711,"id":489439,"image_urls":{"headline_url":"https://hackster.imgix.net/uploads/attachments/489439/screenshot_from_2018-05-24_15-54-54_8vVL6eEd4a.png?auto=compress%2Cformat&amp;w=740&amp;h=555&amp;fit=max","lightbox_url":"https://hackster.imgix.net/uploads/attachments/489439/screenshot_from_2018-05-24_15-54-54_8vVL6eEd4a.png?auto=compress%2Cformat&amp;w=1280&amp;h=960&amp;fit=max"},"position":0,"width":1276}],"uid":"3dd5488d66"}--></script>
+                                    <h3 class='hckui__typography__h3 title-with-anchor'id='toc-histogram-peak-detection-5'>
+                                       <p >
+                                       <p class='hckui__typography__bodyL'></p>
+                                       </p><span >Histogram Peak Detection</span>
+                                    </h3>
+                                    <p class='hckui__typography__bodyL'><span >We'll be applying a special algorithm called the </span><strong >Sliding</strong><span > </span><strong >Window</strong><span > </span><strong >Algorithm</strong><span > to detect our lane lines. However, before we can apply it, we need to determine a good starting point for the algorithm. It works well if it starts out in a spot where there are lane pixels present, but how can we detect the location of these lane pixels in the first place? It's actually really simple!</span></p>
+                                    <p class='hckui__typography__bodyL'>We'll be getting a histogram of the image with respect to the X axis. Each portion of the histogram below displays how many white pixels are in each column of the image. We then take the highest peaks of each side of the image, one for each lane line. Here's what the histogram looks like, next to the binary image:</p>
+                                    <div data-hypernova-key="ImageCarousel" data-hypernova-id="bae3d854-2d01-4a78-975e-7aaedded198e">
+                                       <div data-reactroot="">
+                                          <div class="image_carousel__container__1sUib undefined">
+                                             <div class="image_carousel__wrapper__J0lO0 lazy_image__fade__3oXBs ">
+                                                <div style="max-width:740px">
+                                                   <div class="hckui__util__absolutePlaceholderParent" style="padding-top:55.72%"></div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div></div>
+                                       </div>
+                                    </div>
+                                    <script type="application/json" data-hypernova-key="ImageCarousel" data-hypernova-id="bae3d854-2d01-4a78-975e-7aaedded198e"><!--{"images":[{"caption":"","height":711,"id":489440,"image_urls":{"headline_url":"https://hackster.imgix.net/uploads/attachments/489440/screenshot_from_2018-05-24_15-54-54_anqaM6Fd6v.png?auto=compress%2Cformat&amp;w=740&amp;h=555&amp;fit=max","lightbox_url":"https://hackster.imgix.net/uploads/attachments/489440/screenshot_from_2018-05-24_15-54-54_anqaM6Fd6v.png?auto=compress%2Cformat&amp;w=1280&amp;h=960&amp;fit=max"},"position":0,"width":1276}],"uid":"7029205116"}--></script>
+                                    <p class='hckui__typography__bodyL'></p>
+                                    <div data-hypernova-key="ImageCarousel" data-hypernova-id="7d27aaab-04a0-4948-80c9-5ac4ba988ae0">
+                                       <div data-reactroot="">
+                                          <div class="image_carousel__container__1sUib undefined">
+                                             <div class="image_carousel__wrapper__J0lO0 lazy_image__fade__3oXBs ">
+                                                <div style="max-width:739.9999999999999px">
+                                                   <div class="hckui__util__absolutePlaceholderParent" style="padding-top:71.34%"></div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div></div>
+                                       </div>
+                                    </div>
+                                    <script type="application/json" data-hypernova-key="ImageCarousel" data-hypernova-id="7d27aaab-04a0-4948-80c9-5ac4ba988ae0"><!--{"images":[{"caption":"","height":834,"id":489441,"image_urls":{"headline_url":"https://hackster.imgix.net/uploads/attachments/489441/screenshot_from_2018-05-24_15-59-28_9Snht5zrkx.png?auto=compress%2Cformat&amp;w=740&amp;h=555&amp;fit=max","lightbox_url":"https://hackster.imgix.net/uploads/attachments/489441/screenshot_from_2018-05-24_15-59-28_9Snht5zrkx.png?auto=compress%2Cformat&amp;w=1280&amp;h=960&amp;fit=max"},"position":0,"width":1169}],"uid":"7a4e22104b"}--></script>
+                                    <h3 class='hckui__typography__h3 title-with-anchor'id='toc-sliding-window-search-6'>
+                                       <p >
+                                       <p class='hckui__typography__bodyL'></p>
+                                       </p><span >Sliding Window Search</span>
+                                    </h3>
+                                    <p class='hckui__typography__bodyL'>The sliding window algorithm will be used to differentiate between the left and right lane boundaries so that we can fit two different curves representing the lane boundaries. </p>
+                                    <p class='hckui__typography__bodyL'>The algorithm itself is very simple. Starting from the initial position, the first window measures how many pixels are located inside the window. If the amount of pixels reaches a certain threshold, it shifts the next window to the average lateral position of the detected pixels.  If not enough pixels are detected, the next window starts in the same lateral position. This continues until the windows reach the other edge of the image. </p>
+                                    <p class='hckui__typography__bodyL'>The pixels that fall within the windows are given a marker. In the images below, the blue marked pixels represent the right lane, and the red ones represent the left:</p>
+                                    <div data-hypernova-key="ImageCarousel" data-hypernova-id="c88fa3c1-bfe8-4eaf-ae94-c77a38791c79">
+                                       <div data-reactroot="">
+                                          <div class="image_carousel__container__1sUib undefined">
+                                             <div class="image_carousel__wrapper__J0lO0 lazy_image__fade__3oXBs ">
+                                                <div style="max-width:740.0000000000001px">
+                                                   <div class="hckui__util__absolutePlaceholderParent" style="padding-top:56.78%"></div>
+                                                </div>
+                                             </div>
+                                             <div class="image_carousel__caption__3A6J-"><span>1 / 2</span></div>
+                                          </div>
+                                          <div></div>
+                                       </div>
+                                    </div>
+                                    <script type="application/json" data-hypernova-key="ImageCarousel" data-hypernova-id="c88fa3c1-bfe8-4eaf-ae94-c77a38791c79"><!--{"images":[{"caption":"","height":724,"id":489444,"image_urls":{"headline_url":"https://hackster.imgix.net/uploads/attachments/489444/screenshot_from_2018-05-24_16-08-11_JgYj7Eua3L.png?auto=compress%2Cformat&amp;w=740&amp;h=555&amp;fit=max","lightbox_url":"https://hackster.imgix.net/uploads/attachments/489444/screenshot_from_2018-05-24_16-08-11_JgYj7Eua3L.png?auto=compress%2Cformat&amp;w=1280&amp;h=960&amp;fit=max"},"position":0,"width":1275},{"caption":"","height":619,"id":489447,"image_urls":{"headline_url":"https://hackster.imgix.net/uploads/attachments/489447/screenshot_from_2018-05-24_16-09-52_jvO9c9gkgp.png?auto=compress%2Cformat&amp;w=740&amp;h=555&amp;fit=max","lightbox_url":"https://hackster.imgix.net/uploads/attachments/489447/screenshot_from_2018-05-24_16-09-52_jvO9c9gkgp.png?auto=compress%2Cformat&amp;w=1280&amp;h=960&amp;fit=max"},"position":1,"width":1210}],"uid":"8d0ff5da49"}--></script>
+                                    <h3 class='hckui__typography__h3 title-with-anchor'id='toc-curve-fitting-7'>
+                                       <p >
+                                       <p class='hckui__typography__bodyL'></p>
+                                       </p><span >Curve Fitting</span>
+                                    </h3>
+                                    <p class='hckui__typography__bodyL'><span >The rest of the project is really easy. We apply polynomial regression to the red and blue pixels individually using </span><code >np.polyfit()</code><span >, and then the detector is mostly done! </span></p>
+                                    <p class='hckui__typography__bodyL'>Here's what the curves look like:</p>
+                                    <div data-hypernova-key="ImageCarousel" data-hypernova-id="fd31307c-7ea4-443c-9150-6e46c84d199e">
+                                       <div data-reactroot="">
+                                          <div class="image_carousel__container__1sUib undefined">
+                                             <div class="image_carousel__wrapper__J0lO0 lazy_image__fade__3oXBs ">
+                                                <div style="max-width:740px">
+                                                   <div class="hckui__util__absolutePlaceholderParent" style="padding-top:56.03%"></div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div></div>
+                                       </div>
+                                    </div>
+                                    <script type="application/json" data-hypernova-key="ImageCarousel" data-hypernova-id="fd31307c-7ea4-443c-9150-6e46c84d199e"><!--{"images":[{"caption":"","height":716,"id":489451,"image_urls":{"headline_url":"https://hackster.imgix.net/uploads/attachments/489451/screenshot_from_2018-05-24_16-15-42_cSDRTif4Fo.png?auto=compress%2Cformat&amp;w=740&amp;h=555&amp;fit=max","lightbox_url":"https://hackster.imgix.net/uploads/attachments/489451/screenshot_from_2018-05-24_16-15-42_cSDRTif4Fo.png?auto=compress%2Cformat&amp;w=1280&amp;h=960&amp;fit=max"},"position":0,"width":1278}],"uid":"08bde51862"}--></script>
+                                    <h3 class='hckui__typography__h3 title-with-anchor'id='toc-overlay-detected-lane-8'>
+                                       <p >
+                                       <p class='hckui__typography__bodyL'></p>
+                                       </p><span >Overlay Detected Lane</span>
+                                    </h3>
+                                    <p class='hckui__typography__bodyL'>Here's the final part of the detection system, the user interface! We simply create an overlay which fills in the detected portion of the lane, and then we can finally apply it to video. Once put through the video pipeline, you should see the following output:</p>
+                                   
+                                    <h3 class='hckui__typography__h3 title-with-anchor'id='toc-conclusion-9'>
+                                       <p >
+                                       <p class='hckui__typography__bodyL'></p>
+                                       </p><span >Conclusion</span>
+                                    </h3>
+                                    <p class='hckui__typography__bodyL'>
+									<span >And that's it, a basic curved lane detector! It works much better than the previous version, and it even handles curved lanes! However, it still does get affected by shadows and drastic changes in road texture to some extent. In my next lane detection project, we'll use some machine learning techniques to develop an incredibly robust lane and vehicle detection system. 
+								
+									</p>
+                                 </div>
+                                 <a class="toggle-container hckui__typography__textCenter hckui__layout__hiddenMedUp hckui__typography__link hckui__typography__bodyS hckui__typography__bold" href="javascript:void(0)" onclick="javascript:toggleContainer(&quot;.project-story&quot;, this);">
+                                    <i class="hckui__typography__iconWrapper hckui__typography__iconBaselineFix">
+                                       <svg class="hckui__typography__icon hckui__typography__icon16">
+                                          <use xlink:href="#svg-arrow-down"></use>
+                                       </svg>
+                                    </i>
+                                    <span>Read more</span>
+                                 </a>
+                              </section>
+                              <div class="project-section-break"></div>
+                              <section id="schematics">
+                                 <div class="project-section-title">
+                                    <h2 class="hckui__typography__h2 title-with-anchor">
+                                       <a class="anchor" href="#schematics">
+                                          <i class="hckui__typography__iconWrapper hckui__typography__iconBaselineFix">
+                                             <svg class="hckui__typography__icon hckui__typography__icon20">
+                                                <use xlink:href="#svg-link"></use>
+                                             </svg>
+                                          </i>
+                                       </a>
+                                       <span>Schematics </span>
+                                    </h2>
+                                 </div>
+                                 <div class="project-attachment">
+                                    <div class="header">
+                                       <div class="text">
+                                          <h3 class="hckui__typography__h3">Diagram of Pipeline</h3>
+                                       </div>
+                                       <div class="actions">
+                                          <a class="hckui__buttons__md hckui__buttons__outlineBlack hckui__buttons__icon" href="../../hacksterio.s3.amazonaws.com/uploads/attachments/489456/pipeline_X4MbaXJm1P.png" title="Download">
+                                             <i class="hckui__typography__iconWrapper">
+                                                <svg class="hckui__typography__icon hckui__typography__icon16">
+                                                   <use xlink:href="#svg-download-file"></use>
+                                                </svg>
+                                             </i>
+                                          </a>
+                                       </div>
+                                    </div>
+                                    <div class="embed original boxed hckui__typography__textCenter"><img src="../../hackster.imgix.net/uploads/attachments/489456/pipeline_X4MbaXJm1P.png" /></div>
+                                 </div>
+                              </section>
+                              <div class="project-section-break"></div>
+                              <section id="code">
+                                 <div class="project-section-title">
+                                    <h2 class="hckui__typography__h2 title-with-anchor">
+                                       <a class="anchor" href="#code">
+                                          <i class="hckui__typography__iconWrapper hckui__typography__iconBaselineFix">
+                                             <svg class="hckui__typography__icon hckui__typography__icon20">
+                                                <use xlink:href="#svg-link"></use>
+                                             </svg>
+                                          </i>
+                                       </a>
+                                       <span>Code </span>
+                                    </h2>
+                                 </div>
+                                 <div class="project-attachment">
+                                    <div class="header">
+                                       <div class="text">
+                                          <h3 class="hckui__typography__h3">Jupyter Notebook</h3>
+                                          <div class="hckui__typography__bodyS hckui__typography__pebble">Here&#39;s all the code you need to run the vision pipeline.</div>
+                                       </div>
+                                       <div class="actions">
+                                          <a class="hckui__buttons__md hckui__buttons__icon hckui__buttons__outlineBlack" href="https://github.com/TazelHossan/" rel="nofollow" target="_blank">
+                                             <i class="hckui__typography__iconWrapper">
+                                                <svg class="hckui__typography__icon hckui__typography__icon16">
+                                                   <use xlink:href="#svg-external-link"></use>
+                                                </svg>
+                                             </i>
+                                          </a>
+                                       </div>
+                                    </div>
+                                    <div class="embed lazy-embed original" data-html="<div class=&quot;close-header&quot;></div>">
+                                       <div class="embed-loader"><i class="fa fa-spin fa-circle-o-notch fa-2x"></i></div>
+                                    </div>
+                                 </div>
+                                 <div class="project-attachment">
+                                    <div class="header">
+                                       <div class="text">
+                                          <h3 class="hckui__typography__h3">Github Repo</h3>
+                                          <div class="hckui__typography__bodyS hckui__typography__pebble">This contains the code and the input data we used for this project.</div>
+                                       </div>
+                                       <div class="actions">
+                                          <a class="hckui__buttons__md hckui__buttons__icon hckui__buttons__outlineBlack" href="https://github.com/TazelHossan/" rel="nofollow" target="_blank">
+                                             <i class="hckui__typography__iconWrapper">
+                                                <svg class="hckui__typography__icon hckui__typography__icon16">
+                                                   <use xlink:href="#svg-external-link"></use>
+                                                </svg>
+                                             </i>
+                                          </a>
+                                       </div>
+                                    </div>
+                                   
+                                 </div>
+                              </section>
+                              <div class="project-section-break"></div>
+                              <section id="team">
+                                 <div class="project-section-title">
+                                    <h2 class="hckui__typography__h2 title-with-anchor">
+                                       <a class="anchor" href="#team">
+                                          <i class="hckui__typography__iconWrapper hckui__typography__iconBaselineFix">
+                                             <svg class="hckui__typography__icon hckui__typography__icon20">
+                                                <use xlink:href="#svg-link"></use>
+                                             </svg>
+                                          </i>
+                                       </a>
+                                       <span>Credits</span>
+                                    </h2>
+                                 </div>
+                                 <div>
+                                    <div class="user-card media">
+                                      <div class="media-body">
+                                          <h5 class="hckui__typography__h4"><a class="hckui__typography__link" href="https://github.com/TazelHossan/">1) Md. Tazel Hossan</a> </h5>
+                                          <h5 class="hckui__typography__h4"><a class="hckui__typography__link" href="https://github.com/TazelHossan/">2) Mushfika Ikfat Munia</a> </h5>
+                                          
+                                          
+                                       </div>
+                                    </div>
+                                 </div>
+                              </section>
+                              <div class="project-section-break"></div>
+                          
+                           </div>
+                        </div>
+                        
+                     </div>
+                  </div>
+               </div>
+               
+              
+            </div>
+         </div>
+      </div>
+      
+      
+     
+      <script>function toggleContainer(toggleClass, hideSelector) {
+         var el = document.querySelector(toggleClass);
+         el.classList.toggle('collapsed');
+         el.classList.toggle('expanded');
+         
+         if (hideSelector) hideSelector.style.display = 'none';
+         }
+      </script>
+	  <script src="../../prod.hackster-cdn.online/assets/bundles/manifest.666e654084f6c73b157a.js"></script><script src="../../prod.hackster-cdn.online/assets/bundles/vendors.aa5b3c4292b2ea37be6b.js"></script><script src="../../prod.hackster-cdn.online/assets/bundles/commons.c85462fddc61f78a399d.js"></script><script src="../../prod.hackster-cdn.online/assets/bundles/client_bundle.121f86de756ba9c116d0.js"></script><script src="../../prod.hackster-cdn.online/assets/application-7533f0206a9d152ed982bf957f6733e55e16cfbee954b44ae70d46cce06c25c6.js"></script><script>$(function(){ fetchHelloWorld(); });</script><script>
+         (function(){
+           var request = new XMLHttpRequest();
+           request.open('POST.html', 'https://api.hackster.io/private/stats', true);
+           request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+           request.withCredentials = true;
+           var data = {
+             referrer: (document.referrer || document.origin),
+           id: '93521',
+           type: 'Project',
+             a: 'show',
+             c: 'projects'
+           };
+           var params = Object.keys(data).map(function(key) { return [key, encodeURIComponent(data[key])].join('='); }).join('&');
+           request.send(params);
+         })();
+      </script>
+      </script>
+	  <script src="../../prod.hackster-cdn.online/assets/nav_affixed-837fe8dba39e8dce634de0c96d4395fdbf0c2899d48460be708e8bb140024e66.js"></script><script src="../../prod.hackster-cdn.online/assets/projects/page-155ce781aed099d931875ebaee74705927fc090a1675cddc46c2f0136479740d.js"></script><script>$(function(){
+         var s = "<span class='impressions-stats' itemprop='userInteractionCount'>63,368</span>";
+         $('.impressions-stats').replaceWith(s);
+         });
+      </script>
+      <link rel="stylesheet" media="all" href="../../prod.hackster-cdn.online/assets/font-awesome-c6d887e006edb557bed347f057a55f0fff5ba57b8e32f897ea20da058a25102b.css" />
+   </body>
+   </html>
